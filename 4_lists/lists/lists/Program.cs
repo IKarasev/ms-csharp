@@ -45,31 +45,38 @@ namespace lists
             int numFibo = Convert.ToInt32(Console.ReadLine());
             var fibo = new List<int> { 1, 1 };
 
-            int numRem = numFibo;
             if ((numFibo == 1) || (numFibo == 2))
             {
                 Console.WriteLine($"Fibonachi of {numFibo} = 1");
             } else
             {
-                while (numFibo > 2)
+                while (fibo.Count < numFibo)
                 {
                     int p1 = fibo[fibo.Count - 1];
                     int p2 = fibo[fibo.Count - 2];
                     fibo.Add(p1 + p2);
-                    numFibo--;
                 }
-                Console.WriteLine($"Fibonachi of {numRem} = {fibo[fibo.Count - 1]}");
+                Console.WriteLine($"Fibonachi of {numFibo} = {fibo[fibo.Count - 1]}");
+            }
+
+            Console.Write("\nDo you want to list all fibo numbers? (y\\n):");
+            string ans = Console.ReadLine();
+            if (ans == "y")
+            {
+                ShowList(fibo);
             }
 
             Console.ReadKey();
         }
 
-        private static void ShowList(List<String> strList)
-        {   
+        private static void ShowList<T>(List<T> strList)
+        {
             // Iterate the list
+            int num = 1;
             foreach (var li in strList)
             {
-                Console.WriteLine($"Hello, {li}");
+                Console.WriteLine($"[{num}] {li}");
+                num++;
             }
         }
     }
